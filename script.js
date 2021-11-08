@@ -39,7 +39,7 @@ $(function () {
                     while ((kivalasztottKartya = kivalsztottKartyak.pop())) {
                         kivalasztottKartya.allapotValtozas();
                     }
-                    TriggerUnBlocked();//megszüntetjük a blokkolást
+                    TriggerUnBlocked(); //megszüntetjük a blokkolást
                 }, 2000);
             }
         }
