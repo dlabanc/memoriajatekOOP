@@ -58,3 +58,18 @@ class Kartya {
         //Az eseményt majd a script.js-ben el tudom kapni.
     }
 }
+
+class Jatekter {
+    constructor(szuloElem, sablonElem, kepekTomb) {
+
+
+        kepekTomb.forEach((element) => {
+            let ujElem = sablonElem.clone().appendTo(szuloElem); //új elem létrehozása
+            const kartya = new Kartya(element, ujElem); //Kártya osztály példányosítása
+            kartyaTomb.push(kartya);
+        });
+
+        sablonElem.remove(); //sablonelem eltávolítása
+
+    }
+}
