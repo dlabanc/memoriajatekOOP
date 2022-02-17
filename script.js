@@ -10,7 +10,7 @@ class Jatek {
     constructor() {
         let szuloElem = $("article"); //itt lesznek a kártyák
         let sablonElem = $(".kartya"); //ez a mintaelem, amit másolgatunk
-        kepekTombFeltoltese();
+        this.kepekTombFeltoltese();
         const jatekter = new Jatekter(szuloElem, sablonElem, kepekTomb);
         const kivalsztottKartyak = []; //itt fogom tárolni a kiválsztott Kártyákat
         //feliratkozunk a Kartya osztályban létrehozott *kartyaKattintas* eseményre
@@ -27,7 +27,7 @@ class Jatek {
             //ha már van két kártya a kiválasztottKártyák között
             if (kivalsztottKartyak.length >= 2) {
                 //Blokkolom az összes kártyát, azaz nem lesznek kattinthatóak
-                TriggerBlocked();
+                this.TriggerBlocked();
 
                 //ha egyenlő a két kártya
                 if (
@@ -53,22 +53,22 @@ class Jatek {
                 }
             }
         });
-
-        function TriggerBlocked() {
-            window.dispatchEvent(new Event("gameBlocked"));
-        }
         function TriggerUnBlocked() {
             window.dispatchEvent(new Event("gameUnBlocked"));
         }
-        function kepekTombFeltoltese() {
-            for (let index = 1; index <= meret; index++) {
-                kepekTomb.push("kepek/kep" + index + ".jpg");
-                kepekTomb.push("kepek/kep" + index + ".jpg");
-            }
-            //kepekTomb vélelten sorrendű keverése, a tesztelés idejére kikommentezzük
-            kepekTomb.sort((a, b) => {
-                return Math.random() - 0.5;
-            });
+    }
+    TriggerBlocked() {
+        window.dispatchEvent(new Event("gameBlocked"));
+    }
+
+    kepekTombFeltoltese() {
+        for (let index = 1; index <= meret; index++) {
+            kepekTomb.push("kepek/kep" + index + ".jpg");
+            kepekTomb.push("kepek/kep" + index + ".jpg");
         }
+        //kepekTomb vélelten sorrendű keverése, a tesztelés idejére kikommentezzük
+        kepekTomb.sort((a, b) => {
+            return Math.random() - 0.5;
+        });
     }
 }

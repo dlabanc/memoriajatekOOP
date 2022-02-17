@@ -2,7 +2,7 @@ class Kartya {
     constructor(fajlnev, elem) {
         this.fajlnev = fajlnev; //A konstruktor megkapja az aktuális képet,
         this.elem = elem; // illetve az aktuális html elemet.(aktuális div-re mutat)
-        this.hatter = "kepek/hatter.jpg"; //Ez a háttérkép
+        this.hatter = "../kepek/hatter.jpg"; //Ez a háttérkép
         this.allapot = false; //kezdetben minden kép a hátát mutatja
         this.blokkolt = false; //Az elem kattintható
         this.kepElem = this.elem.children("img"); //beállítunk a képre is egy változót
@@ -27,10 +27,10 @@ class Kartya {
     }
 
     allapotValtozas() {
-        console.log(this);
         this.allapot = !this.allapot;
         if (this.allapot) {
             this.kepElem.attr("src", this.fajlnev);
+            console.log("this");
         } else {
             this.kepElem.attr("src", this.hatter);
         }
@@ -61,8 +61,6 @@ class Kartya {
 
 class Jatekter {
     constructor(szuloElem, sablonElem, kepekTomb) {
-
-
         kepekTomb.forEach((element) => {
             let ujElem = sablonElem.clone().appendTo(szuloElem); //új elem létrehozása
             const kartya = new Kartya(element, ujElem); //Kártya osztály példányosítása
@@ -70,6 +68,5 @@ class Jatekter {
         });
 
         sablonElem.remove(); //sablonelem eltávolítása
-
     }
 }
