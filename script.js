@@ -14,14 +14,16 @@ class Jatek {
         const jatekter = new Jatekter(szuloElem, sablonElem, kepekTomb);
         const kivalsztottKartyak = []; //itt fogom tárolni a kiválsztott Kártyákat
         //feliratkozunk a Kartya osztályban létrehozott *kartyaKattintas* eseményre
+
         $(window).on("kartyaKattintas", (event) => {
             //ha blokkolva van a kattintás, akkor ne is menjünk tovább
             if (event.detail.blocked) {
                 return;
             }
+            let kivalasztottKartya = "";
             console.log(event.detail); //ezért kellett visszaadni az objektumot
             kivalsztottKartyak.push(event.detail);
-
+            console.log(kivalsztottKartyak);
             //ha már van két kártya a kiválasztottKártyák között
             if (kivalsztottKartyak.length >= 2) {
                 //Blokkolom az összes kártyát, azaz nem lesznek kattinthatóak
@@ -29,7 +31,8 @@ class Jatek {
 
                 //ha egyenlő a két kártya
                 if (
-                    kivalsztottKartyak[0].fajlnev == kivalsztottKartyak[1].fajlnev
+                    kivalsztottKartyak[0].fajlnev ==
+                    kivalsztottKartyak[1].fajlnev
                 ) {
                     //ürítsük ki a tömböt , miközben eltüntetjük a nyertes kártyákat
                     while ((kivalasztottKartya = kivalsztottKartyak.pop())) {
@@ -40,7 +43,9 @@ class Jatek {
                     //ha  akét kártya nem egynelő, akkor foduljanak visszaadni
                     //késleltetve
                     setTimeout(function () {
-                        while ((kivalasztottKartya = kivalsztottKartyak.pop())) {
+                        while (
+                            (kivalasztottKartya = kivalsztottKartyak.pop())
+                        ) {
                             kivalasztottKartya.allapotValtozas();
                         }
                         TriggerUnBlocked(); //megszüntetjük a blokkolást
@@ -65,6 +70,5 @@ class Jatek {
                 return Math.random() - 0.5;
             });
         }
-
     }
 }
