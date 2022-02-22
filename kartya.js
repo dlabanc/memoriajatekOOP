@@ -39,11 +39,12 @@ class Kartya {
     kattintas() {
         if (this.blokkolt) {
             return;
-        }
+        } else {
         this.allapotValtozas();
         //itt hívom meg a KattintasTriggert,
         //ami kiváltja a kartyaKattintas eseményt.
         this.KattintasTrigger();
+        }
     }
 
     //létrehozunk egy saját  eseményt,

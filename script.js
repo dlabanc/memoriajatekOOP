@@ -14,6 +14,7 @@ class Jatek {
         const jatekter = new Jatekter(szuloElem, sablonElem, kepekTomb);
         const kivalsztottKartyak = []; //itt fogom tárolni a kiválsztott Kártyákat
         //feliratkozunk a Kartya osztályban létrehozott *kartyaKattintas* eseményre
+        
 
         $(window).on("kartyaKattintas", (event) => {
             //ha blokkolva van a kattintás, akkor ne is menjünk tovább
@@ -67,8 +68,8 @@ class Jatek {
             kepekTomb.push("kepek/kep" + index + ".jpg");
         }
         //kepekTomb vélelten sorrendű keverése, a tesztelés idejére kikommentezzük
-        kepekTomb.sort((a, b) => {
+        /* kepekTomb.sort((a, b) => {
             return Math.random() - 0.5;
-        });
+        }); */
     }
 }
